@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📝 Enter Your Details</h1>
+        <p class="subtitle">Fill the form to generate your resume</p>
+    </header>
+
+    <form id="resumeForm" class="resume-form">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input id="email" type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input id="phone" required>
+        </div>
+
+        <div class="form-group">
+            <label>Skills</label>
+            <textarea id="skills" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Education</label>
+            <textarea id="education" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Experience</label>
+            <textarea id="experience" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Projects</label>
+            <textarea id="projects"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Career Objective</label>
+            <textarea id="careerObjective"></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Generate Resume</button>
+        </div>
+    </form>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Generating resume...</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
