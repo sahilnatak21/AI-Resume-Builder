@@ -30,7 +30,7 @@ async function handleFormSubmit(event) {
     
     try {
         // Call backend API (JSON output)
-        const response = await fetch('http://192.168.1.5:8081/api/generate-resume', {
+        const response = await fetch('https://ai-resume-builder-621364977101.asia-south1.run.app/api/generate-resume', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
