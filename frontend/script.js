@@ -36,7 +36,10 @@ async function handleFormSubmit(event) {
             body: JSON.stringify(formData)
         });
         
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+            const detail = await response.text();
+            throw new Error(`Server returned ${response.status}${detail ? `: ${detail}` : ''}`);
+        }
         
         const resumeData = await response.json();
         
@@ -48,7 +51,7 @@ async function handleFormSubmit(event) {
         
     } catch (error) {
         console.error('Error generating resume:', error);
-        alert('Failed to generate resume. Ensure backend is running on http://192.168.1.5:8081');
+        alert(`Failed to generate resume. ${error.message}`);
     }
 
     // Hide loading overlay

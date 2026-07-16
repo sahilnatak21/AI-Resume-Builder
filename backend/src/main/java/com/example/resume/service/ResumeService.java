@@ -7,16 +7,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ResumeService {
 
-    private String apiKey ="AIzaSyAKUb82LSAh31VARH1-_qa4AiM7Faba75c";
+    @Value("${GEMINI_API_KEY:}")
+    private String apiKey;
 
     private static final String GEMINI_URL =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=";
+            "https://generativelanguage.googleapis.com/v1/models/gemini-3.5-flash:generateContent?key=";
 
 
     // ====================================================================================
@@ -213,6 +215,10 @@ public class ResumeService {
     // CALL GEMINI API
     // ====================================================================================
     private String callGemini(String prompt) {
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalStateException("GEMINI_API_KEY is not configured on the server");
+        }
+
         RestTemplate rest = new RestTemplate();
 
         JSONObject body = new JSONObject();
